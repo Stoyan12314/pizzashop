@@ -1,45 +1,52 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <title>{{Title}}</title>
+        
         
     </head>
     <body>
         <div class = "top">
-            Original 
+            Black Angus 
         </div>
         <div class="Selecting">
-            <form method="POST" > 
-                <select name="select1"> 
-                    <option value="None">Select crust size</option>
-                    <option value="Med">(25cm)Medium</option>
-                    <option value="lar">(35cm)Large</option>
-                    <option value="extraLar">(40cm)Extra large</option>
-                </select>
-
-                <select name="select2"> 
-                    <option value="None">Select ingredient</option>
-                    <option value="Bacon">Grilled chicken</option>
-                    <option value="Tuna">Chicken kebab</option>
-                    <option value="Ham">Pineapple</option>
-                </select>
-
-                <select name="select3"> 
-                    <option value="None">Select ingredient</option>
-                    <option value="Bacon">Grilled chicken</option>
-                    <option value="Tuna">Chicken kebab</option>
-                    <option value="Ham">Pineapple</option>
-                </select>
-
-                <select name="select4"> 
-                    <option value="None">Select ingredient</option>
-                    <option value="Bacon">Grilled chicken</option>
-                    <option value="Tuna">Chicken kebab</option>
-                    <option value="Ham">Pineapple</option>
-                </select>
-                <p id="enterButton"><input type="submit" value="Confirm order"></p> 
-            </form>           
+            <div id="label1">Size</div>
+            <div id="label2">Topping 1</div>
+            <div id="label3">Topping 2</div>
+            <div id="label4">Topping 3</div>
+            <form method="POST" >
                     
+                    <select name="firstChoice"> 
+                        <option value="None"></option>
+                        <option value="Med">(25cm)Medium</option>
+                        <option value="lar">(35cm)Large</option>
+                        <option value="extraLar">(40cm)Extra large</option>
+                    </select>
+                    
+                    <select name="secondChoice"> 
+                            <option value="None"></option>
+                            <option value="Bacon">Bacon</option>
+                            <option value="Tuna">Tuna</option>
+                            <option value="Ham">Ham</option>
+                    </select>
+                    
+                    <select name="thirdChoice"> 
+                        <option value="None"></option>
+                        <option value="Bacon">Mozzarella</option>
+                        <option value="Tuna">Pineapple</option>
+                        <option value="Ham">Cabanossi</option>
+                    </select>
+                  
+                    <select name="forthChoice"> 
+                        <option value="None"></option>
+                        <option value="Bacon">butter</option>
+                        <option value="Tuna">Kale</option>
+                        <option value="Ham">Ilives</option>
+                    </select>
+                <p  id="Quantity">Quantity<input name="Quantity"/></p> 
+                <p  id="Comment">Comment <input name="Comment"/></p> 
+                <p id="enterButton"><input type="submit" name ="Confirm order" value="Confirm order"></p> 
+                
+            </form>                 
         </div>
             
     </body>
