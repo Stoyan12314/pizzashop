@@ -26,7 +26,7 @@ def auto_increment():
 def loginIn_index(): 
    return render_template("login.html")
 
-@app.route("/", methods =['GET','POST'])
+@app.route("/", methods =['POST'])
 def login_check_index():
     
     login = request.form['login']
@@ -125,5 +125,41 @@ def cook_index():
         #return redirect(url_for('cook_index'))
     return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings=readings_from_file()[3], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
 
+@app.route("/angus_index", methods =['GET','POST'])
+def angus_index():
+    if request.method == 'POST':
+        comment = request.form['Comment']
+        pizzaType="angus"
+        unChecked="Unchecked"
+        firstChoice = request.form.get("firstChoice")
+        secondChoice= request.form.get("secondChoice")
+        if not comment:
+            comment="None"
+        combine=[auto_increment(), pizzaType, firstChoice, secondChoice, comment, unChecked]
+        with open('CSV/Customers.csv','a') as inFile:
+            writer = csv.writer(inFile)
+            writer.writerow(combine) 
+        return render_template("blackangus.html")
+    elif request.method=="GET":
+        return render_template("blackangus.html")
+        
 
+
+@app.route("/mama_index", methods =['GET','POST'])
+def mama_index():
+    if request.method == 'POST':
+        comment = request.form['Comment']
+        pizzaType="mamaMia"
+        unChecked="Unchecked"
+        firstChoice = request.form.get("firstChoice")
+        secondChoice= request.form.get("secondChoice")
+        if not comment:
+            comment="None"
+        combine=[auto_increment(), pizzaType, firstChoice, secondChoice, comment, unChecked]
+        with open('CSV/Customers.csv','a') as inFile:
+            writer = csv.writer(inFile)
+            writer.writerow(combine) 
+        return render_template("blackangus.html")
+    elif request.method=="GET":
+        return render_template("blackangus.html")
         

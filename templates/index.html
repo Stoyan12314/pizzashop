@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <title>{{Title}}</title>
+        
         
     </head>
     <body>
@@ -14,7 +14,7 @@
                     
                         <img id="PizzaOriginal" src="static/CSS/images/pizza.jpg" alt="photo of pizza">
                         <h3>Original</h3>
-                        <a id="AddToCartOriginal" href="{{ url_for('original_index') }}">Add to cart</a>
+                        <a id="AddToCartOriginal" href="{{ url_for('original_index') }}">Add</a>
                         
                     </div>
                     
@@ -23,21 +23,21 @@
                         
                         <img id="PizzaAngus" src="static/CSS/images/black-angus-yerevan.jpg" alt="photo of pizza">
                         <h3>Black Angus</h3>
-                        <a href="{{ url_for('cook_index') }}">Add to cart</a>
+                        <a href="{{ url_for('angus_index') }}">Add</a>
                     </div>
 
                     <div class = "MamaMia">
                         
                         <img id="PizzaMia" src="static/CSS/images/thumb-1920-645087.jpg" alt="photo of pizza">
                         <h3>Mama mia</h3>
-                        <a href="https://www.w3schools.com">Add to cart</a>
+                        <a href="{{ url_for('mama_index') }}">Add</a>
                     </div>
 
                     <div class = "Cheesy">
                         
                         <img id="PizzaCheesy" src="static/CSS/images/320966-cheese-pizza-wallpaper-high-quality-free-download-subwallpaper.jpg" alt="photo of pizza">
                         <h3>Giga Cheesy</h3>
-                        <a href="{{ url_for('cheesy_index') }}">Add to cart</a>
+                        <a href="{{ url_for('cheesy_index') }}">Add</a>
                     </div>
                     
         </div>
