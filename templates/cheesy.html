@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <title>{{Title}}</title>
+        
+    </head>
+    <body>
+        <div class = "top">
+           Giga Cheesy 
+        </div>
+        <div class="Selecting">
+            <form method="POST" > 
+                <select name="firstChoice"> 
+                    <option value="None">Select crust size</option>
+                    <option value="Med">(25cm)Medium</option>
+                    <option value="lar">(35cm)Large</option>
+                    <option value="extraLar">(40cm)Extra large</option>
+                </select>
+
+                <select name="secondChoice">
+                    <option value="None">Select ingredient</option>
+                    <option value="Bacon">Shawarma</option>
+                    <option value="Tuna">Grilled beef</option>
+                    <option value="Ham">Pepperoni</option>
+                </select>
+                <p id="enterButton"><input type="submit" value="Confirm order"></p> 
+            </form>           
+                    
+        </div>
+            
+    </body>
+</html>
