@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <title>{{Title}}</title>
+        
+    </head>
+    <body>
+        <div class = "top">
+            Original 
+        </div>
+        <div class="Selecting">
+            <form method="POST" >
+                <select name="firstChoice"> 
+                    <option value="None">Select crust size</option>
+                    <option value="Med">(25cm)Medium</option>
+                    <option value="lar">(35cm)Large</option>
+                    <option value="extraLar">(40cm)Extra large</option>
+                </select>
+
+                <select name="secondChoice"> 
+                    <option value="None">Select ingredient</option>
+                    <option value="Bacon">Bacon</option>
+                    <option value="Tuna">Tuna</option>
+                    <option value="Ham">Ham</option>
+                </select>
+                <p  id="Comment">Comment <input name="Comment"/></p> 
+                <p id="enterButton"><input type="submit" name ="Confirm order" value="Confirm order"></p> 
+                
+            </form>           
+                    
+        </div>
+            
+    </body>
+</html>

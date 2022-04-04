@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <title>{{Title}}</title>
+        
+    </head>
+    <body>
+        <div class = "top">
+           Table orders
+        </div>
+        
+            <div class="rows">
+                <h3>order ID</h3>
+                {% for order in orders: %}
+                <li>{{ order }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>Pizza type</h3>
+                {% for pizzaType in pizzaTypes: %}
+                <li>{{ pizzaType }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>Size</h3>
+                {% for size in sizes: %}
+                <li>{{ size }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>topping</h3>
+                {% for topping in toppings: %}
+                <li>{{ topping }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>comment</h3>
+                {% for comment in comments: %}
+                <li>{{ comment }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>In oven</h3>
+                {% for checkbox in checkboxes: %}
+                <li>{{checkbox}}</li>
+                {% endfor %}
+            </div>    
+            <form action="" method="POST"> 
+                <p  id="Comment">Select pizza by order id<input name="idRow"/></p> 
+                <p  id="Comment">Type change<input name="ChangeState"/></p> 
+                <p id="enterButton"><input type="submit" value="login"></p> 
+            </form>     
+            
+    </body>
+</html>

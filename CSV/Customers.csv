@@ -1,0 +1,6 @@
+orderID,pizzaType,size,topping,comment,state
+1,original,Med,Ham,None,Checked
+2,original,extraLar,Tuna,Extra ham,Checked
+1,original,lar,Tuna,Extra ham,Checked
+1,original,Med,Ham,Extra ham,Checked
+1,original,Med,Ham,Extra ham,Unchecked
