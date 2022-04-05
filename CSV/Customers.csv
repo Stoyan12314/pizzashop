@@ -22,3 +22,7 @@ orderID,pizzaType,size,topping1,topping2,topping3,quantity,comment,state
 10,original,Med,Bacon,Pineapple,Ilives,2,Extra ham,Unchecked
 
 1,original,Med,Bacon,Pineapple,Kale,2,Extra ham,Unchecked
+1,original,Med,Bacon,Pineapple,Butter,1,None,Unchecked
+2,original,lar,Tuna,Mozzarella,Kale,1,None,Unchecked
+1,original,Med,Bacon,Pineapple,Butter,1,None,Unchecked
+1,original,Med,Bacon,Pineapple,Kale,1,None,Unchecked

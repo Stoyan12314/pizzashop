@@ -15,7 +15,7 @@ import pandas as pd
 board = CustomPymata4(baud_rate = 57600, com_port = "COM4")
 RED_LED = 4
 GREEN_LED = 5
-YELLOW_LED = 6
+YELLOW_LED = 7
 OFF = 0
 ON = 1
 YELLOW_INTERVAL = 0.5
@@ -163,16 +163,19 @@ def cook_index():
                 orders=row['state']
                 state.append(orders)
             for states in state:
-                while states=="Unchecked":
-                    current_time = datetime.now()
-                    if (current_time - yellow_led_time).total_seconds() > YELLOW_INTERVAL:
-                        yellow_led_state = not yellow_led_state
-                        board.digital_write(YELLOW_LED, yellow_led_state)
-                        yellow_led_time = current_time
-                        print("aruino LED On")
-                # else:
-                #     board.digital_write(YELLOW_LED, OFF)
-                #     print("arduino LED off")
+                if states=="Unchecked":
+                        board.digital_write(YELLOW_LED, ON)
+                        print("arduino led on")
+
+                    # current_time = datetime.now()
+                    # if (current_time - yellow_led_time).total_seconds() > YELLOW_INTERVAL:
+                    #     yellow_led_state = not yellow_led_state
+                    #     board.digital_write(YELLOW_LED, yellow_led_state)
+                    #     yellow_led_time = current_time
+                    #     print("aruino LED On")
+                else:
+                    board.digital_write(YELLOW_LED, OFF)
+                    print("arduino LED off")
         return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
         
             
