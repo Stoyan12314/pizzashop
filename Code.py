@@ -1,10 +1,4 @@
 import csv
-
-
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-
-
 from math import comb
 from typing import Counter
 from xml.etree.ElementTree import Comment
@@ -12,6 +6,7 @@ from flask import Flask, redirect, url_for
 import time
 from datetime import datetime
 from flask import render_template, request, redirect, flash
+import flask
 from jinja2 import FileSystemLoader
 from CustomPymata4 import *
 import pandas as pd
@@ -63,7 +58,7 @@ def original_index():
         with open('CSV/Customers.csv','a') as inFile:
             writer = csv.writer(inFile)
             writer.writerow(combine) 
-        return render_template("original.html")
+        return redirect(url_for('main_page'))
     elif request.method=="GET":
         return render_template("original.html")
 
@@ -85,7 +80,7 @@ def cheesy_index():
         with open('CSV/Customers.csv','a') as inFile:
             writer = csv.writer(inFile)
             writer.writerow(combine) 
-        return render_template("cheesy.html")
+        return redirect(url_for('main_page'))
     elif request.method=="GET":
         return render_template("cheesy.html")
 
@@ -123,17 +118,11 @@ def readings_from_file():
             comment.append(comments)
         return order, pizzaType, size, topping1, comment, state, topping2, topping3, quantity
 
-def on_modified(event):
-    flash('New Orders')
+
     
 @app.route("/cook_index", methods =['GET','POST'])
 def cook_index():
-    #event_handler = FileSystemEventHandler
-   # event_handler.on_modified = on_modified
-    #observer= Observer()
-   # path="CSV/Customers.csv"
-    #observer.schedule(event_handler,path ,recursive=True)
-   # observer.start()
+   
     if request.method=="POST":
         df = pd.read_csv("CSV/Customers.csv")
        
@@ -148,7 +137,24 @@ def cook_index():
         print(df)
         render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
         #return redirect(url_for('cook_index'))
-    return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
+    #return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
+    elif request.method=="GET":
+        with open('CSV/Customers.csv', 'r', newline='') as file: 
+            reader = csv.DictReader(file)
+       
+            state=[]
+            #header=next(reader)
+            for row in reader:
+                orders=row['state']
+                state.append(orders)
+            for states in state:
+                if states=="Unchecked":
+                    print("aruino LED On")
+                else:
+                    print("arduino LED off")
+        return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
+        
+            
 
 @app.route("/angus_index", methods =['GET','POST'])
 def angus_index():
@@ -167,7 +173,7 @@ def angus_index():
         with open('CSV/Customers.csv','a') as inFile:
             writer = csv.writer(inFile)
             writer.writerow(combine) 
-        return render_template("blackangus.html")
+        return redirect(url_for('main_page'))
     elif request.method=="GET":
         return render_template("blackangus.html")
         
@@ -190,7 +196,7 @@ def mama_index():
         with open('CSV/Customers.csv','a') as inFile:
             writer = csv.writer(inFile)
             writer.writerow(combine) 
-        return render_template("mamaMia.html")
+        return redirect(url_for('main_page'))
     elif request.method=="GET":
         return render_template("mamaMia.html")
         
