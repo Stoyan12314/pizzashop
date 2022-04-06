@@ -2,11 +2,10 @@
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     </head>
-    <body>
+    <body class="cookDisplay">
         <div class = "top">
            Table orders
         </div>
-        
             <div class="rows">
                 <h3>order ID</h3>
                 {% for order in orders: %}
