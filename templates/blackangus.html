@@ -1,6 +1,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        
+        
     </head>
     <body>
         <div class = "top">
@@ -12,33 +14,38 @@
             <div id="label3">Topping 2</div>
             <div id="label4">Topping 3</div>
             <form method="POST" >
+                    
                     <select name="firstChoice"> 
                         <option value="None"></option>
                         <option value="Med">(25cm)Medium</option>
                         <option value="lar">(35cm)Large</option>
                         <option value="extraLar">(40cm)Extra large</option>
                     </select>
+                    
                     <select name="secondChoice"> 
                             <option value="None"></option>
                             <option value="Bacon">Bacon</option>
                             <option value="Tuna">Tuna</option>
                             <option value="Ham">Ham</option>
                     </select>
+                    
                     <select name="thirdChoice"> 
                         <option value="None"></option>
                         <option value="Mozzarella">Mozzarella</option>
                         <option value="Pineapple">Pineapple</option>
                         <option value="Cabanossi">Cabanossi</option>
                     </select>
+                  
                     <select name="forthChoice"> 
                         <option value="None"></option>
                         <option value="Butter">Butter</option>
                         <option value="Kale">Kale</option>
                         <option value="Ilives">Ilives</option>
                     </select>
-                <p id="Quantity">Quantity<input name="Quantity"/></p> 
-                <p id="Comment">Comment <input name="Comment"/></p> 
+                <p  id="Quantity">Quantity<input name="Quantity"/></p> 
+                <p  id="Comment">Comment <input name="Comment"/></p> 
                 <p id="enterButton"><input type="submit" name ="Confirm order" value="Confirm order"></p> 
+                
             </form>                 
         </div>
             

@@ -1,11 +1,14 @@
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+       
+        
     </head>
-    <body class="cookDisplay">
+    <body>
         <div class = "top">
            Table orders
         </div>
+        
             <div class="rows">
                 <h3>order ID</h3>
                 {% for order in orders: %}
@@ -62,7 +65,8 @@
             </div>    
             <form action="" method="POST"> 
                 <p  id="Comment">Select pizza by order id<input name="idRow"/></p> 
-                <p  id="Comment"><input type = "submit" input name="ChangeState" input value="Checked"/></p> 
+                <p  id="Comment">Type change<input name="ChangeState"/></p> 
+                <p id="enterButton"><input type="submit" value="login"></p> 
             </form>     
             
     </body>

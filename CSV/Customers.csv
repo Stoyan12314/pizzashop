@@ -1,17 +1,24 @@
 orderID,pizzaType,size,topping1,topping2,topping3,quantity,comment,state
-1,original,Med,Bacon,Pineapple,Kale,2,nothing,Checked
-2,angus,extraLar,Bacon,Pineapple,Ilives,8,nothing,Checked
-3,mamaMia,lar,Ham,Mozzarella,Ilives,5,nothing,Checked
-4,cheesy,Med,Ham,Cabanossi,Butter,8,extra ham,Checked
-5,mamaMia,lar,Ham,Pineapple,Ilives,4,nothing,Checked
-6,angus,Med,Ham,Mozzarella,Butter,4,n,Checked
-7,original,lar,Tuna,Cabanossi,Ilives,2,extra cheese,Checked
-8,original,extraLar,Tuna,Mozzarella,Kale,3,Extra ham,Checked
-9,cheesy,Med,Bacon,Mozzarella,Butter,1,Extra ham,Checked
-10,cheesy,Med,Bacon,Mozzarella,Butter,1,Extra ham,Checked
-11,original,Med,Bacon,Mozzarella,Kale,1,Extra ham,Checked
-12,angus,extraLar,Ham,Cabanossi,Butter,2,extra cheese,Checked
-13,mamaMia,extraLar,Bacon,Mozzarella,Butter,1,extra cheese,Checked
-14,original,lar,Bacon,Mozzarella,Ilives,1,extra cheese,Checked
-15,original,Med,Bacon,Mozzarella,Butter,1,Extra ham,Checked
-16,mamaMia,lar,Tuna,Mozzarella,Kale,3,Extra ham,Checked
+
+
+1,original,Med,Bacon,Tuna,Bacon,2,Extra ham,Unchecked
+
+2,original,Med,Bacon,Bacon,Bacon,3,extra cheese,Unchecked
+
+3,original,Med,Bacon,Bacon,Bacon,3,extra cheese,Unchecked
+
+4,original,Med,Tuna,Cabanossi,Kale,3,extra cheese,Unchecked
+
+5,cheesy,Med,Bacon,Mozzarella,Butter,5,Extra ham,Unchecked
+
+6,mamaMia,Med,Bacon,Mozzarella,Ilives,7,extra cheese,Unchecked
+
+7,mamaMia,lar,Tuna,Mozzarella,Kale,2,extra cheese,Unchecked
+
+8,mamaMia,lar,Bacon,Pineapple,Kale,2,extra cheese,Unchecked
+
+9,original,Med,Tuna,Cabanossi,Ilives,2,Extra Tuna,Unchecked
+
+10,original,Med,Bacon,Pineapple,Ilives,2,Extra ham,Unchecked
+
+1,original,Med,Bacon,Pineapple,Kale,2,Extra ham,Unchecked
