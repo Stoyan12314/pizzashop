@@ -2,7 +2,7 @@
 body{
 overflow-x: hidden;
 overflow-y: hidden;
-font-family: 'Roboto', sans-serif;
+font-family: 'Georgia', serif; /* the old one -> 'Roboto', sans-serif */
 background-color: #a66c48;
 }
 
@@ -21,7 +21,7 @@ body .top{ /*styling for top title */
 body .top .logo{ /*styling for the top logo*/
   width: 50px;
   position: absolute;
-  top:10px; left:795px;
+  top:10px; left: 830px;
 }
 
 /*                                           Pizza Original                                               */
@@ -47,20 +47,13 @@ body .menu .Original #PizzaOriginal{
 }
 .menu .Original a{
   padding-bottom: 0px;
-  position: absolute; top: 100px; left:330px; /*use this to move add to cart button*/
+  position: absolute; top: 100px; left:405px; /*use this to move add to cart button*/
   font-size: 40px;
   text-decoration: none;
 }
 
 
 
-h4:hover{
-  background-color: #b52032;
-  
-}
-.selecting #Comment{
-  width: 100px;
-}
 /*              Pizza Black Angus             */
 .BlackAngus{
   position: absolute;  /*use this to move the whole box*/
@@ -86,7 +79,7 @@ body .menu .BlackAngus #PizzaAngus{
 }
 .menu .BlackAngus a{
   padding-bottom: 0px;
-  position: absolute; top: 100px; left:330px; /*use this to move add to cart button*/
+  position: absolute; top: 100px; left:405px; /*use this to move add to cart button*/
   font-size: 40px;
   text-decoration: none;
 }     
@@ -111,7 +104,7 @@ body .menu .MamaMia #PizzaMia{
   font-size: 35px;
 }
 .menu .MamaMia a{
-  position: absolute; top: 99px; left:330px; /*use this to move add to cart button*/
+  position: absolute; top: 99px; left:390px; /*use this to move add to cart button*/
   text-decoration: none;
   font-size: 40px;
 }
@@ -139,7 +132,7 @@ body .menu .Cheesy #PizzaCheesy{
   font-size: 35px;
 }
 .menu .Cheesy a{
-  position: absolute; top: 111px; left:330px; /*use this to move add to cart button*/
+  position: absolute; top: 111px; left:390px; /*use this to move add to cart button*/
   font-size: 40px;
   text-decoration: none;
 }
@@ -166,13 +159,7 @@ body .login{
 
 
 }
-body .selecting{
-  position: absolute; 
-  top:100px; left:565px; /*use this to move the whole box*/
-  background-color:#d11212c9;
-  display:flex;
-  padding: 34px 86px 30px 30px;
-}
+                                    
 
 
 .rows{
@@ -180,3 +167,153 @@ body .selecting{
   display: inline-block;
   margin: 5px;
 }
+
+
+
+
+/*                                              styling for each pizza's order menu                                              */
+
+body .selecting{
+  position: absolute; 
+  border: 3px solid white;
+  padding: 60px 60px;
+  
+  /* top:100px; left:440px; use this to move the whole box*/
+  background-color:#d11212c9;
+  /*display:flex;*/
+  /* padding: 250px 89px 99px 40px; */
+   /*use this to increase/decrease box background color size of the box (first is for the top side of the box, 
+  second is for the right side of the box, third is for the bottom of the box 
+  and the last one if for the left side of the box)*/
+}
+
+.wrapper_select{
+display: flex;
+width: 300px;
+justify-content: space-between;
+margin: 10px;
+font-size: 25;}
+
+body .Selecting #Comment{
+  display: flex;
+  width: 300px;
+  height: 100px;
+  justify-content: space-between;
+  margin: 10px;
+  font-size: 25;
+}
+
+.dropdown{
+  width: 100px;
+}
+
+/* body .Selecting input[name="Comment"]{
+  position: relative;
+  left: 0.5px;
+  bottom: 3px;
+  height: 100px;
+  width: 90px;
+  
+} */
+
+body .Selecting [name="Confirm order"]{
+  /*display: flex;*/
+  font-family: 'Georgia', serif;
+  width: 300px;
+  /*justify-content: space-between;*/
+  margin: auto;
+  font-size: 25; 
+  
+}
+
+/* body .Selecting [name="firstChoice"] {
+  height: 20px;
+  
+  position: relative;
+  bottom:157px;
+  left:225px;
+  
+}
+body .Selecting [name="secondChoice"] {
+  height: 20px;
+  width: 129px;
+  position: relative;
+  top: -103px;
+  left:93px;
+  
+}
+body .Selecting [name="thirdChoice"] {
+  height: 20px;
+  width: 129px;
+  position: relative;
+  top: -45px;
+  right:40px;
+  text-align: center;
+}
+
+body .Selecting [name="forthChoice"] {
+  height: 20px;
+  width: 129px;
+  position: relative;
+  top: 15px;
+  right: 171px;
+  text-align: center;
+}
+
+body .Selecting input[name="Quantity"]{
+  position: relative;
+  left: 130.5px;
+  bottom: 3px;
+  height: 30px;
+  width: 34px;
+  
+} 
+
+
+body .Selecting #Quantity{
+  font-size: 26px;
+  position: relative;
+  top: 20px;
+  left: 100px;
+}
+
+
+body .Selecting #Comment{
+  font-size: 26px;
+  position:relative;
+  top: 15px;
+  left:100px;
+}
+
+body .Selecting #label1{
+  font-size: 30px;
+  position: absolute;
+  top:83px;
+  left: 185px;
+}
+body .Selecting #label2{
+  font-size: 26px;
+  position: absolute;
+  top:140px;
+  left:130px;
+  
+}
+body .Selecting #label3{
+  font-size: 26px;
+  position: absolute;
+  top:199px;
+  left:129px;
+}
+body .Selecting #label4{
+  font-size: 26px;
+  position: absolute;
+  top:260px;
+  left:129px;}
+  
+body .Selecting #enterButton{
+ 
+  position: relative;
+  top:100px;
+  left:230px; 
+  
+} */
