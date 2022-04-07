@@ -1,0 +1,5 @@
+orderID,pizzaType,size,topping1,topping2,topping3,quantity,comment,state
+1,original,Med,Bacon,Mozzarella,Butter,5,nothing,Checked
+2,cheesy,lar,Bacon,Mozzarella,Kale,7,nothing,Checked
+3,original,Med,Bacon,Mozzarella,Butter,5,extra Stoyan,Checked
+4,cheesy,lar,Bacon,Mozzarella,Butter,8,extra Dan,Checked
