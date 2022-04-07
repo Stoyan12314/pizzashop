@@ -2,13 +2,10 @@
 body{
 overflow-x: hidden;
 overflow-y: hidden;
-font-family: 'Roboto', sans-serif;
+font-family: 'Georgia', serif; /* the old one -> 'Roboto', sans-serif */
 background-color: #a66c48;
 }
-.cookDisplay{
-  overflow-x:hidden;
-  overflow-y:scroll;
-}
+
 
 
 
@@ -24,9 +21,9 @@ body .top{ /*styling for top title */
 body .top .logo{ /*styling for the top logo*/
   width: 50px;
   position: absolute;
-  top:10px; left:795px;
+  top:10px; left: 830px;
 }
-
+/*          this styling is for the main menu from where you select which pizza you want                */
 /*                                           Pizza Original                                               */
 .Original{
   position: absolute;          /*use this to move the whole box*/
@@ -177,107 +174,37 @@ body .login{
 /*                                              styling for each pizza's order menu                                              */
 
 body .selecting{
-  position: absolute; 
-  top:100px; left:440px; /*use this to move the whole box*/
+  position: absolute;
+  left:530px;
+  border: 3px solid white;
+  padding: 60px 60px;
   background-color:#d11212c9;
-  display:flex;
-  padding: 250px 89px 99px 30px;
-   /*use this to increase/decrease box background color size of the box (first is for the top side of the box, 
-  second is for the right side of the box, third is for the bottom of the box 
-  and the last one if for the left side of the box)*/
 }
 
+.wrapper_select{
+display: flex;
+width: 300px;
+justify-content: space-between;
+margin: 10px;
+font-size: 25;}
 
-body .Selecting [name="firstChoice"] {
-  height: 20px;
-  
-  position: relative;
-  bottom:157px;
-  left:225px;
-  
-}
-body .Selecting [name="secondChoice"] {
-  height: 20px;
-  width: 129px;
-  position: relative;
-  top: -103px;
-  left:93px;
-  
-}
-body .Selecting [name="thirdChoice"] {
-  height: 20px;
-  width: 129px;
-  position: relative;
-  top: -45px;
-  right:40px;
-  text-align: center;
-}
-
-body .Selecting [name="forthChoice"] {
-  height: 20px;
-  width: 129px;
-  position: relative;
-  top: 15px;
-  right:171px;
-  text-align: center;
-}
-
-body .Selecting #Quantity{
-  font-size: 30px;
-  position:relative;
-  top: 20px;
-  left:100px;
-}
 body .Selecting #Comment{
-  font-size: 30px;
-  position:relative;
-  top: 15px;
-  left:100px;
-}
-body .Selecting input[name="Comment"]{
-  position:absolute;
-  height: 100px;
+  display: flex;
   width: 300px;
-  
+  height: 100px;
+  justify-content: space-between;
+  margin: 10px;
+  font-size: 25;
 }
-body .Selecting input[name="Quantity"]{
-  position:absolute;
-  left:130.5px;
-  bottom: 3px;
-  height: 30px;
-  width: 34px;
-  
+
+.dropdown{
+  width: 100px;
 }
-body .Selecting #label1{
-  font-size: 30px;
-  position: absolute;
-  top:83px;
-  left: 185px;
+
+body .Selecting [name="Confirm order"]{
+  font-family: 'Georgia', serif;
+  width: 300px;
+  margin: auto;
+  font-size: 25; 
 }
-body .Selecting #label2{
-  font-size: 26px;
-  position: absolute;
-  top:140px;
-  left:130px;
-  
-}
-body .Selecting #label3{
-  font-size: 26px;
-  position: absolute;
-  top:199px;
-  left:129px;
-}
-body .Selecting #label4{
-  font-size: 26px;
-  position: absolute;
-  top:260px;
-  left:129px;
-  
-}
-body .Selecting #enterButton{
- 
-  position: relative;
-  top:100px;
-  left:230px;
-  
-}
+
