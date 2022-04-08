@@ -6,8 +6,9 @@
         <div class = "top">
            Table orders
         </div>
+        <div class="background">
             <div class="rows">
-                <h3>order ID</h3>
+                <h3>order number</h3>
                 {% for order in orders: %}
                 <li>{{ order }}</li>
                 {% endfor %}
@@ -64,6 +65,8 @@
                 <p  id="Comment">Select pizza by order id<input name="idRow"/></p> 
                 <p  id="Comment"><input type = "submit" input name="ChangeState" input value="Checked"/></p> 
             </form>     
+        </div>
+           
             
     </body>
 </html>

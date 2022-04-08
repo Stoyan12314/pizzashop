@@ -161,9 +161,9 @@ body .login{
 }
                                     
 
-
 .rows{
   list-style: none;
+  background-color: #b52032;
   display: inline-block;
   margin: 5px;
 }

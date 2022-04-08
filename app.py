@@ -6,7 +6,7 @@ import time
 from CustomPymata4 import *
 import pandas as pd
 
-board = CustomPymata4(baud_rate = 57600, com_port = "COM6")
+board = CustomPymata4(baud_rate = 57600, com_port = "COM5")
 RED_LED = 4
 GREEN_LED = 5
 YELLOW_LED = 7
@@ -197,10 +197,14 @@ def cook_index():
           board.displayShow(row)
           time.sleep(0.1)
           board.displayShow("0000")
-        value=int(row)-1
-        if int(listOfOrder[-1])>int(value) and int(value)>=0:
-            df.at[int(value), 'state']=state
-            df.to_csv("CSV/Customers.csv", index=False)
+        if (row):
+            value=int(row)-1
+        else:
+            value=900000000000
+        if (listOfOrder):
+            if int(listOfOrder[-1])>=int(value) and int(value)>=0:
+                df.at[int(value), 'state']=state
+                df.to_csv("CSV/Customers.csv", index=False)
         return redirect(url_for('cook_index', orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5]))
     elif request.method=="GET":
         delete_checked_orders()
