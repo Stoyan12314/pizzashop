@@ -159,7 +159,14 @@ body .login{
 
 
 }
-                                    
+.indexing{
+  position: inherit;
+  top:100px;
+  list-style: none;
+  background-color: #b52032;
+  display: inline-block;
+  margin: 5px;
+}                              
 
 .rows{
   list-style: none;

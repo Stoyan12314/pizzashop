@@ -7,12 +7,17 @@
            Table orders
         </div>
         <div class="background">
-            <div class="rows">
+            <div class="indexing">
                 <h3>order number</h3>
-                {% for order in orders: %}
-                <li>{{ order }}</li>
+                
+                {% set count = namespace(value=1) %}
+                {% for i in orders %}
+                <li>{{ count.value }}</li>
+                    {% set count.value = count.value + 1 %}
                 {% endfor %}
+                
             </div>
+            
             <div class="rows">
                 <h3>Pizza type</h3>
                 {% for pizzaType in pizzaTypes: %}
