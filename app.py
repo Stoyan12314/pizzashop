@@ -1,5 +1,6 @@
 import csv
 from datetime import date, datetime
+from pickle import TRUE
 from unittest import skip
 from flask import Flask, redirect, url_for, render_template, request
 import time
@@ -43,6 +44,17 @@ def return_orders_from_row():
             ordersFromRow=row['orderID']
             listOfOrder.append(int(ordersFromRow))
     return listOfOrder
+
+def check_for_checked_orders():
+    state=read_order_state()
+    result = all(element == "Checked" for element in state)
+    if result:
+        board.digital_write(YELLOW_LED, OFF)
+        board.digital_write(RED_LED, ON)
+    else:
+        board.digital_write(YELLOW_LED, ON)
+        board.digital_write(RED_LED, OFF)
+
 
 def check_input_value():
     row = request.form['idRow']
@@ -124,7 +136,8 @@ def write_pizza_type_to_csv(pizzaName):
     with open('CSV/Customers.csv','a') as inFile:
             writer = csv.writer(inFile)
             writer.writerow(values_from_forms(pizzaName)) 
-    board.digital_write(YELLOW_LED, ON)        
+    board.digital_write(YELLOW_LED, ON)
+    board.digital_write(RED_LED, OFF)      
 
 
 
@@ -228,15 +241,7 @@ def cook_index():
         return redirect(url_for('cook_index', orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5]))
     elif request.method=="GET":
         delete_checked_orders()
-        state=read_order_state()
-        result = all(element == "Checked" for element in state)
-        if result:
-                board.digital_write(YELLOW_LED, OFF)
-                board.digital_write(RED_LED, ON)  
-        else:
-                board.digital_write(YELLOW_LED, ON)
-                board.digital_write(RED_LED, OFF)
-                return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
+        check_for_checked_orders()
         return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
 
 
