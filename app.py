@@ -6,7 +6,7 @@ from flask import Flask, redirect, url_for, render_template, request
 import time
 from CustomPymata4 import *
 import pandas as pd
-from pandas.io.parsers import read_csv
+
 board = CustomPymata4(baud_rate = 57600, com_port = "COM5")
 RED_LED = 4
 GREEN_LED = 5
@@ -22,26 +22,19 @@ board.set_pin_mode_digital_output(BUZZER)
 number=0
 app = Flask(__name__)
 #initialization
-def initialization():
-    global number
-    order=[]
-    with open('CSV/Customers.csv', 'r', newline='') as file: 
-            reader = csv.DictReader(file)
-            for column in reader:
-                orders=column['orderID']
-                order.append(orders)
-            if (order):
-                number=int(order[-1])
-            if not number:
-                number=0
+order=[]
+with open('CSV/Customers.csv', 'r', newline='') as file: 
+        reader = csv.DictReader(file)
+        for row in reader:
+            orders=row['orderID']
+            order.append(orders)
+        if (number):
+            number=int(order[-1])
+        if not number:
+            number=0
 
-
-        
-initialization()
 
 #functions
-
-
 
 def return_orders_from_row():
     listOfOrder=[]
@@ -118,9 +111,9 @@ def delete_checked_orders():
         
 def auto_increment():
     global number
-    #df = pd.read_csv("CSV/Customers.csv")
-    #if df.empty:
-    #    number=0
+    df = pd.read_csv("CSV/Customers.csv")
+    if df.empty:
+        number=0
     number += 1
     return str(number)
 
@@ -140,21 +133,15 @@ def values_from_forms(pizzaName):
 
 
 def write_pizza_type_to_csv(pizzaName):
-    with open('CSV/Customers.csv','a') as fileOne, open('CSV/Statistics.csv','a') as fileTwo:
-            writerCustomers = csv.writer(fileOne)
-            writerStatistics= csv.writer(fileTwo)
-            valuesForBothFiles=values_from_forms(pizzaName)
-            writerCustomers.writerow(valuesForBothFiles)
-            writerStatistics.writerow(valuesForBothFiles)
+    with open('CSV/Customers.csv','a') as inFile:
+            writer = csv.writer(inFile)
+            writer.writerow(values_from_forms(pizzaName)) 
     board.digital_write(YELLOW_LED, ON)
-    #board.digital_write(RED_LED, OFF)      
+    board.digital_write(RED_LED, OFF)      
 
-def remove_empty_columns():
-    df = read_csv("CSV/Statistics.csv")
-    filtered_data = df.dropna(axis='columns', how='all')
-    filtered_data.to_csv("CSV/Statistics.csv", index=False)   
 
-def readings_from_file_customers():
+
+def readings_from_file():
     with open('CSV/Customers.csv', 'r', newline='') as file: 
         reader = csv.DictReader(file)
         size=[]
@@ -166,49 +153,16 @@ def readings_from_file_customers():
         quantity=[]
         comment=[]
         state=[]
-        for column in reader:
-            orders=column['orderID']
-            pizzaTypes=column['pizzaType']
-            sizes=column['size']
-            toppings1=column['topping1']
-            toppings2=column['topping2']
-            toppings3=column['topping3']
-            quantities=column['quantity']
-            comments=column['comment']
-            states=column['state']
-            state.append(states)
-            size.append(sizes)
-            order.append(orders)
-            pizzaType.append(pizzaTypes)
-            topping1.append(toppings1)
-            topping2.append(toppings2)
-            topping3.append(toppings3)
-            quantity.append(quantities)
-            comment.append(comments)
-        return order, pizzaType, size, topping1, comment, state, topping2, topping3, quantity
-
-def readings_from_file_statistics():
-    with open('CSV/Statistics.csv', 'r', newline='') as file: 
-        reader = csv.DictReader(file)
-        size=[]
-        order=[]
-        pizzaType=[]
-        topping1=[]
-        topping2=[]
-        topping3=[]
-        quantity=[]
-        comment=[]
-        state=[]
-        for column in reader:
-            orders=column['orderID']
-            pizzaTypes=column['pizzaType']
-            sizes=column['size']
-            toppings1=column['topping1']
-            toppings2=column['topping2']
-            toppings3=column['topping3']
-            quantities=column['quantity']
-            comments=column['comment']
-            states=column['state']
+        for row in reader:
+            orders=row['orderID']
+            pizzaTypes=row['pizzaType']
+            sizes=row['size']
+            toppings1=row['topping1']
+            toppings2=row['topping2']
+            toppings3=row['topping3']
+            quantities=row['quantity']
+            comments=row['comment']
+            states=row['state']
             state.append(states)
             size.append(sizes)
             order.append(orders)
@@ -284,23 +238,17 @@ def cook_index():
     if request.method=="POST":
         row=check_input_value()
         write_to_csv_if_con_true(row)
-        return redirect(url_for('cook_index', orders=readings_from_file_customers()[0], pizzaTypes=readings_from_file_customers()[1], sizes=readings_from_file_customers()[2], toppings1=readings_from_file_customers()[3], toppings2=readings_from_file_customers()[6], toppings3=readings_from_file_customers()[7], quantities=readings_from_file_customers()[8], comments=readings_from_file_customers()[4],checkboxes=readings_from_file_customers()[5]))
+        return redirect(url_for('cook_index', orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5]))
     elif request.method=="GET":
         delete_checked_orders()
         check_for_checked_orders()
-        return render_template("cookDisplay.html", orders=readings_from_file_customers()[0], pizzaTypes=readings_from_file_customers()[1], sizes=readings_from_file_customers()[2], toppings1=readings_from_file_customers()[3], toppings2=readings_from_file_customers()[6], toppings3=readings_from_file_customers()[7], quantities=readings_from_file_customers()[8], comments=readings_from_file_customers()[4],checkboxes=readings_from_file_customers()[5])
-
-@app.route("/statistics", methods =['GET','POST'])
-def statistics():
-    if request.method=="POST":
-        return redirect(url_for('statistics', orders=readings_from_file_statistics()[0], pizzaTypes=readings_from_file_statistics()[1], sizes=readings_from_file_statistics()[2], toppings1=readings_from_file_statistics()[3], toppings2=readings_from_file_statistics()[6], toppings3=readings_from_file_statistics()[7], quantities=readings_from_file_statistics()[8], comments=readings_from_file_statistics()[4],checkboxes=readings_from_file_statistics()[5]))
-    elif request.method=="GET":
-        remove_empty_columns()
-        return render_template("statistics.html", orders=readings_from_file_statistics()[0], pizzaTypes=readings_from_file_statistics()[1], sizes=readings_from_file_statistics()[2], toppings1=readings_from_file_statistics()[3], toppings2=readings_from_file_statistics()[6], toppings3=readings_from_file_statistics()[7], quantities=readings_from_file_statistics()[8], comments=readings_from_file_statistics()[4],checkboxes=readings_from_file_statistics()[5])
+        return render_template("cookDisplay.html", orders=readings_from_file()[0], pizzaTypes=readings_from_file()[1], sizes=readings_from_file()[2], toppings1=readings_from_file()[3], toppings2=readings_from_file()[6], toppings3=readings_from_file()[7], quantities=readings_from_file()[8], comments=readings_from_file()[4],checkboxes=readings_from_file()[5])
 
 
-if __name__=="__main__":
 
-    app.run()
+
+
+
+app.run()
 
     
