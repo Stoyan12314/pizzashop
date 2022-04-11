@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <body class="cookDisplay">
+        <div class = "top">
+           Table orders
+        </div>
+        <div class="background">
+            <div class="indexing">
+                <h3>order number</h3>
+                
+                {% set count = namespace(value=1) %}
+                {% for i in orders %}
+                <li>{{ count.value }}</li>
+                    {% set count.value = count.value + 1 %}
+                {% endfor %}
+                
+            </div>
+            
+            <div class="rows">
+                <h3>Pizza type</h3>
+                {% for pizzaType in pizzaTypes: %}
+                <li>{{ pizzaType }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>Size</h3>
+                {% for size in sizes: %}
+                <li>{{ size }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>topping1</h3>
+                {% for topping1 in toppings1: %}
+                <li>{{ topping1 }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>topping2</h3>
+                {% for topping2 in toppings2: %}
+                <li>{{ topping2 }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>topping3</h3>
+                {% for topping3 in toppings3: %}
+                <li>{{ topping3 }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>quantity</h3>
+                {% for quantity in quantities: %}
+                <li>{{ quantity }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>comment</h3>
+                {% for comment in comments: %}
+                <li>{{ comment }}</li>
+                {% endfor %}
+            </div>
+            <div class="rows">
+                <h3>In oven</h3>
+                {% for checkbox in checkboxes: %}
+                <li>{{checkbox}}</li>
+                {% endfor %}
+            </div>    
+            <form action="" method="POST"> 
+                <p  id="Comment">Select pizza by order id<input name="idRow"/></p> 
+                <p  id="Comment"><input type = "submit" input name="ChangeState" input value="Checked"/></p> 
+            </form>     
+        </div>
+           
+            
+    </body>
+</html>
